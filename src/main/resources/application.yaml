@@ -1,0 +1,37 @@
+api.info:
+  title: fuber-taxi-api
+  description: fuber-taxi-api REST API
+  version: v1
+  email: dev@fuber.com
+  name: Fuber
+  url: www.fuber.com
+server:
+  port: 8912
+  servlet:
+    context-path: /api
+    session:
+      timeout: 5
+spring:
+  application:
+    name: fusion-rates-api
+
+  messages:
+    basename: text/messages
+
+  data:
+    rest:
+      base-path: /api
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/dev_fuber?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: postgres
+    password: YourStrongPassw0rd
+
+    hikari:
+      max-lifetime: 600000
+      pool-name: db-conn-pool
+      maximum-pool-size: 20
+      connection-timeout: 10000
+      auto-commit: false
+      leak-detection-threshold: 120000
