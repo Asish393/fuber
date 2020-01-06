@@ -1,5 +1,6 @@
 package com.taxi.fuber.controller;
 
+import com.taxi.fuber.model.RideRequest;
 import com.taxi.fuber.model.dto.impl.RideDto;
 import com.taxi.fuber.model.dto.impl.TaxiDto;
 import com.taxi.fuber.model.dto.impl.UserDto;
@@ -35,8 +36,8 @@ public class RideController {
 	}
 
 	@ApiOperation(value = "Request for new ride")
-	@PostMapping("/request/{userUuid}")
-	public TaxiDto requestRide(@PathVariable final UUID userUuid, @RequestBody RideDto rideDto) {
+	@PostMapping("/request")
+	public TaxiDto requestRide(@RequestBody RideRequest rideRequest) {
 		return null;
 	}
 

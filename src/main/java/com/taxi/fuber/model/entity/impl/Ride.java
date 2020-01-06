@@ -2,7 +2,11 @@ package com.taxi.fuber.model.entity.impl;
 
 import com.taxi.fuber.model.entity.BaseEntity;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 import javax.persistence.Column;
@@ -37,4 +41,8 @@ public class Ride extends BaseEntity {
 	private BigDecimal destLong;
 	@Column(name = "AMOUNT", nullable = false)
 	private BigDecimal amount;
+	@Column(name = "RIDE_START")
+	private LocalDateTime rideStart;
+	@Column(name = "RIDE_END")
+	private LocalDateTime rideEnd;
 }
