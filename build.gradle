@@ -1,7 +1,11 @@
+import org.flywaydb.gradle.task.FlywayMigrateTask
+
 plugins {
 	id 'org.springframework.boot' version '2.2.3.BUILD-SNAPSHOT'
 	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
 	id 'java'
+	id "org.flywaydb.flyway" version "5.2.4"
+
 }
 
 ext {
@@ -9,6 +13,8 @@ ext {
 	lombokVersion = "1.18.8"
 	swaggerVersion = "2.9.2"
 	mapstructVersion = "1.3.0.Final"
+	flywayVersion = "5.2.4"
+
 }
 
 
@@ -37,6 +43,15 @@ dependencies {
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
+	testCompile("org.flywaydb:flyway-core")
+
+}
+flyway {
+	encoding = "UTF-8"
+}
+
+task migrate(type: FlywayMigrateTask) {
+	configFiles = ["doc/flyway/flyway.conf"]
 }
 
 test {

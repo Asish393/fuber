@@ -31,5 +31,5 @@ public class Taxi extends BaseEntity {
 	@Column(name = "AVG_SPEED", nullable = false)
 	private BigDecimal averageSpeed;
 	@Column(name = "IS_ENGAGED", nullable = false)
-	private Boolean isEngaged;
+	private Boolean isEngaged = Boolean.FALSE;
 }
