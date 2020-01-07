@@ -1,5 +1,6 @@
 package com.taxi.fuber.service.impl;
 
+import com.taxi.fuber.exception.TaxiNotFoundException;
 import com.taxi.fuber.mapper.impl.TaxiMapper;
 import com.taxi.fuber.model.RideRequest;
 import com.taxi.fuber.model.dto.impl.TaxiDto;
@@ -21,7 +22,10 @@ public class TaxiService extends BaseService<Taxi, TaxiDto, TaxiRepository, Taxi
 
 	public TaxiDto findNearestTaxi(BigDecimal lat, BigDecimal lng, Boolean isPink) {
 		Taxi taxi = isPink ? repository.findNearestPinkTaxi(lat, lng) : repository.findNearestTaxi(lat, lng);
-		return mapper.entityToDto(Objects.isNull(taxi) ? new Taxi() : taxi);
+		if (Objects.isNull(taxi)) {
+			throw new TaxiNotFoundException("No taxi available");
+		}
+		return mapper.entityToDto(taxi);
 	}
 
 	public TaxiDto releaseTaxi(UUID taxiUuid, RideRequest rideRequest) {
@@ -35,7 +39,7 @@ public class TaxiService extends BaseService<Taxi, TaxiDto, TaxiRepository, Taxi
 	public void updateTaxiLocationAndStatus(UUID taxiUuid, RideRequest rideRequest) {
 		Taxi taxi = repository.findOneByUuidAndIsEngaged(taxiUuid, false);
 		if (Objects.isNull(taxi)) {
-			throw new RuntimeException("Taxi took another ride book another one");
+			throw new TaxiNotFoundException("Taxi took another ride book another one");
 		}
 		taxi.setIsEngaged(true);
 		taxi.setLatitude(rideRequest.getOriginLat());

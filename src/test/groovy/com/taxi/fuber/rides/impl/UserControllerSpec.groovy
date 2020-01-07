@@ -28,11 +28,8 @@ class UserControllerSpec extends BaseSpec<User, UserDto, UserRepository, UserMap
 		repository.deleteAll()
 	}
 
-	private int i = 0
-
 	@Override
 	User createRandomEntity() {
-		i++
 		return User.builder()
 		              .name("ABC"+ RandomUtils.nextInt(12))
 				      .phoneNumber(RandomUtils.nextInt(10).toString())

@@ -24,20 +24,19 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 @ActiveProfiles("TEST")
 class TaxiControllerSpec extends BaseSpec<Taxi, TaxiDto, TaxiRepository, TaxiMapper> {
 
-
 	def setupSpec() {
 		rootUrl = "/v1/taxi/"
 	}
 
 	def cleanup() {
 		repository.deleteAll()
+
 	}
 
 	private int i = 0
 
 	@Override
 	Taxi createRandomEntity() {
-		i++
 		return Taxi.builder()
 				.latitude(BigDecimal.valueOf(RandomUtils.nextLong()))
 				.taxiType(TaxiType.PINK)
