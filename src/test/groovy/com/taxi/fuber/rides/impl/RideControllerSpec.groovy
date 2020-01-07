@@ -83,7 +83,7 @@ class RideControllerSpec extends BaseSpec<Ride, RideDto, RideRepository, RideMap
 		expect: "Status is 400, and error message is returned "
 		this.mockMvc.perform(post(rootUrl + "request").contentType(APPLICATION_JSON).content(request))
 		    .andDo(print())
-		    .andExpect(MockMvcResultMatchers.status().isBadRequest()).andReturn()
+		    .andExpect(MockMvcResultMatchers.status().isBadRequest())
 	}
 
 
