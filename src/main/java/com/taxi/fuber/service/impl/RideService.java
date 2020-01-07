@@ -5,6 +5,7 @@ import com.taxi.fuber.model.RideRequest;
 import com.taxi.fuber.model.dto.impl.RideDto;
 import com.taxi.fuber.model.dto.impl.TaxiDto;
 import com.taxi.fuber.model.entity.impl.Ride;
+import com.taxi.fuber.model.enums.Status;
 import com.taxi.fuber.model.enums.TaxiType;
 import com.taxi.fuber.repository.impl.RideRepository;
 import com.taxi.fuber.service.BaseService;
@@ -67,6 +68,7 @@ public class RideService extends BaseService<Ride, RideDto, RideRepository, Ride
 		rideDto.setDestLat(rideRequest.getDestLat());
 		rideDto.setDestLong(rideRequest.getDestLong());
 		rideDto.setUserId(rideRequest.getUserId());
+		rideDto.setStatus(Status.ACTIVE);
 		return rideDto;
 	}
 

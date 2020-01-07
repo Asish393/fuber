@@ -31,9 +31,9 @@ class UserControllerSpec extends BaseSpec<User, UserDto, UserRepository, UserMap
 	@Override
 	User createRandomEntity() {
 		return User.builder()
-		              .name("ABC"+ RandomUtils.nextInt(12))
-				      .phoneNumber(RandomUtils.nextInt(10).toString())
-		              .build()
+		           .name("ABC" + RandomUtils.nextInt(12))
+		           .phoneNumber(RandomUtils.nextInt(10).toString())
+		           .build()
 	}
 
 	def 'should register user and return'() {
@@ -41,9 +41,10 @@ class UserControllerSpec extends BaseSpec<User, UserDto, UserRepository, UserMap
 		given:
 		expect: "Status is 200, and user is returned "
 		this.mockMvc.perform(post(rootUrl + "register").contentType(APPLICATION_JSON)
-				                     .content(objectMapper.writeValueAsString(userDto)))
-				.andExpect(MockMvcResultMatchers.status().isOk())
+		                                               .content(objectMapper.writeValueAsString(userDto)))
+		    .andExpect(MockMvcResultMatchers.status().isOk())
 	}
+
 	def 'should unregister user'() {
 		User user = createRandomEntity()
 		repository.save(user)

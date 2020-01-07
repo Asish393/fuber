@@ -22,5 +22,6 @@ abstract class BaseSpec<E extends BaseEntity, D extends BaseDto, R extends BaseR
 	protected M mapper
 	@Shared
 	protected String rootUrl
+
 	abstract E createRandomEntity()
 }
