@@ -29,17 +29,24 @@ before start using application.
 To make sure the database is up to date, checkout the latest version of the project and from the root folder run:
 ```
 $ flyway -configFile=./doc/flyway/flyway.conf migrate
+or through gradle task from project folder
+$ ./gradlew migrate
 ```
+DB used for this project is postgres  the configuration details can be found in application.yaml and can be changed as per own configuration
 
 ## Running Application
-You can directly run the FuberApplication or can use sprinboot run
+You can directly run the FuberApplication or can use springboot run from gradle
+
+## API exposed supported can be seen in the swagger 
+URL: http://{domain}:{port}}/api/swagger-ui.html#/
+Local configuration url : http://localhost:8912/api/swagger-ui.html#/
 
 ## Important libraries used
 Following libraries and technologies have been uses
 <table>
     <tr>
         <td><b>Documentation:</b></td>
-        <td><a href="https://swagger.io/">swagger</a></td>
+        <td><a href="https://swagger.io/">Swagger</a></td>
         </tr>
     <tr>
         <td><b>Mapstruct:</b></td>
@@ -55,6 +62,10 @@ Following libraries and technologies have been uses
     </tr>
     <tr>
       <td><b>Integration test:</b></td>
-      <td><a href="https://projectlombok.org/">Spock framework </a></td>
+      <td><a href="http://spockframework.org/">Spock framework </a></td>
     </tr>
+    <tr>
+      <td><b>Unit tests:</b></td>
+      <td><a href="https://junit.org/">Junit</a></td>
+    </tr>    
 </table>
