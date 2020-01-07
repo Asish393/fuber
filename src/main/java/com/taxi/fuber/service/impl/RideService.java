@@ -11,6 +11,7 @@ import com.taxi.fuber.service.BaseService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 
 import java.math.BigDecimal;
 import java.time.Duration;
@@ -18,7 +19,10 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.UUID;
 
+import javax.validation.Valid;
+
 @Service
+@Validated
 public class RideService extends BaseService<Ride, RideDto, RideRepository, RideMapper> {
 	private final TaxiService taxiService;
 
@@ -81,7 +85,7 @@ public class RideService extends BaseService<Ride, RideDto, RideRepository, Ride
 		}
 	}
 
-	public TaxiDto getNearestTaxi(RideRequest rideRequest) {
+	public TaxiDto getNearestTaxi(@Valid RideRequest rideRequest) {
 		Boolean isPink = !Objects.isNull(rideRequest.getTaxiType()) && rideRequest.getTaxiType() == TaxiType.PINK;
 		return taxiService.findNearestTaxi(rideRequest.getOriginLat(), rideRequest.getOrginLong(), isPink);
 	}

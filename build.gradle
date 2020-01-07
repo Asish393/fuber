@@ -4,6 +4,8 @@ plugins {
 	id 'org.springframework.boot' version '2.2.3.BUILD-SNAPSHOT'
 	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
 	id 'java'
+	id "groovy"
+	id "jacoco"
 	id "org.flywaydb.flyway" version "5.2.4"
 
 }
@@ -14,6 +16,9 @@ ext {
 	swaggerVersion = "2.9.2"
 	mapstructVersion = "1.3.0.Final"
 	flywayVersion = "5.2.4"
+	spockVersion = "1.2-groovy-2.5"
+	jacocoToolVersion = "0.8.2"
+
 
 }
 
@@ -43,6 +48,11 @@ dependencies {
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
+	testImplementation("org.spockframework:spock-core:${spockVersion}")
+	testImplementation("org.spockframework:spock-spring:${spockVersion}")
+
+	testImplementation("org.testcontainers:junit-jupiter:1.12.2")
+	testImplementation("org.testcontainers:postgresql:1.11.4")
 	testCompile("org.flywaydb:flyway-core")
 
 }
@@ -53,7 +63,15 @@ flyway {
 task migrate(type: FlywayMigrateTask) {
 	configFiles = ["doc/flyway/flyway.conf"]
 }
-
+jacoco {
+	toolVersion = "${jacocoToolVersion}"
+}
 test {
-	useJUnitPlatform()
+	testLogging {
+		events "started", "skipped", "failed"
+		exceptionFormat "full"
+	}
+
+	// Run jacoco test coverage after test
+	finalizedBy jacocoTestReport
 }

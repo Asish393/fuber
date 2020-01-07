@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.UUID;
 
+import javax.validation.Valid;
+
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
@@ -45,7 +47,7 @@ public class RideController {
 
 	@ApiOperation(value = "Request for new ride")
 	@PostMapping("/request")
-	public TaxiDto requestRide(@RequestBody RideRequest rideRequest) {
+	public TaxiDto requestRide(@RequestBody @Valid RideRequest rideRequest) {
 		return rideService.getNearestTaxi(rideRequest);
 	}
 }

@@ -53,4 +53,8 @@ Following libraries and technologies have been uses
       <td><b>Lombok plugins:</b></td>
       <td><a href="https://projectlombok.org/">For building models etc. </a></td>
     </tr>
+    <tr>
+      <td><b>Integration test:</b></td>
+      <td><a href="https://projectlombok.org/">Spock framework </a></td>
+    </tr>
 </table>
