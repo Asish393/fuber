@@ -30,15 +30,15 @@ public class UserController {
 		this.userService = userService;
 	}
 
-	@ApiOperation(value = "Register new user")
-	@PostMapping("/register")
-	public UserDto register(@RequestBody UserDto userDto) {
-		return userService.create(userDto);
-	}
-
 	@ApiOperation(value = "Unregister user")
 	@DeleteMapping("/{uuid}")
 	public void deRegister(@PathVariable final UUID uuid) {
 		userService.deleteByUuid(uuid);
+	}
+
+	@ApiOperation(value = "Register new user")
+	@PostMapping("/register")
+	public UserDto register(@RequestBody UserDto userDto) {
+		return userService.create(userDto);
 	}
 }

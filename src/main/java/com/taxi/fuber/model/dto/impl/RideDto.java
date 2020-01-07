@@ -3,14 +3,9 @@ package com.taxi.fuber.model.dto.impl;
 import com.taxi.fuber.model.dto.BaseDto;
 import com.taxi.fuber.model.entity.impl.Ride;
 
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.UUID;
-
-import javax.persistence.Column;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

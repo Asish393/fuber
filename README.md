@@ -30,3 +30,27 @@ To make sure the database is up to date, checkout the latest version of the proj
 ```
 $ flyway -configFile=./doc/flyway/flyway.conf migrate
 ```
+
+## Running Application
+You can directly run the FuberApplication or can use sprinboot run
+
+## Important libraries used
+Following libraries and technologies have been uses
+<table>
+    <tr>
+        <td><b>Documentation:</b></td>
+        <td><a href="https://swagger.io/">swagger</a></td>
+        </tr>
+    <tr>
+        <td><b>Mapstruct:</b></td>
+        <td><a href="https://mapstruct.org/">Mapping DTO to entity and vice versa</a></td>
+    </tr>
+    <tr>
+      <td><b>Database Migration:</b></td>
+      <td><a href="https://flywaydb.org/">Used flyway</a></td>
+    </tr>
+    <tr>
+      <td><b>Lombok plugins:</b></td>
+      <td><a href="https://projectlombok.org/">For building models etc. </a></td>
+    </tr>
+</table>

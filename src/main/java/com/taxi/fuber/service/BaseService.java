@@ -3,7 +3,6 @@ package com.taxi.fuber.service;
 import com.taxi.fuber.mapper.BaseMapper;
 import com.taxi.fuber.model.dto.BaseDto;
 import com.taxi.fuber.model.entity.BaseEntity;
-import com.taxi.fuber.model.enums.Status;
 import com.taxi.fuber.repository.BaseRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.UUID;
 
-import static com.taxi.fuber.model.enums.Status.*;
+import static com.taxi.fuber.model.enums.Status.ACTIVE;
+import static com.taxi.fuber.model.enums.Status.INACTIVE;
 
 @Transactional
 public abstract class BaseService<E extends BaseEntity, D extends BaseDto<E>, R extends BaseRepository<E>, M extends BaseMapper<E, D>> {
